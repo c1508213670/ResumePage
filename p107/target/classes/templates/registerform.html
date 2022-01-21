@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>FORM</title>
+  <!-- Meta-Tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="keywords" content=""/>
+  <link rel="shortcut icon" th:href="@{/images/myico.ico}" />
+  <script>
+    addEventListener("load", function () {
+      setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+      window.scrollTo(0, 1);
+    }
+  </script>
+  <!-- //Meta-Tags -->
+  <!-- Stylesheets -->
+  <link th:href="@{css/r_style.css}" rel='stylesheet' type='text/css' />
+  <!--// Stylesheets -->
+  <!--fonts-->
+  <!-- title -->
+	<link href="http://fonts.googleapis.com/css?family=Abhaya+Libre:400,500,600,700,800" rel="stylesheet">
+  <!-- body -->
+  <!--//fonts-->
+  <style type="text/css">
+  .fieldError{
+  color:#fff;
+  font-size:20px;
+  }
+  </style>
+  
+  
+</head>
+
+<body>
+  <header>
+    <h1>Register form</h1>
+  </header>
+  <div class="w3ls-contact">
+
+    <!-- form starts here -->
+    <form th:action="@{/reg}" th:method="post" th:object="${user}">
+      <div class="agile-field-txt">
+        <label>
+          Name :</label>
+        <input type="text"  th:field="${user.name}"/>
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.name}')}" th:errors="${user.name}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          School :</label>
+        <input type="text" th:field="${user.school}"/>
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.school}')}" th:errors="${user.school}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          Subject :</label>
+        <input type="text" th:field="${user.subject}" />
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.subject}')}" th:errors="${user.subject}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          Sno :</label>
+        <input type="text" th:field="${user.sno}" />
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.sno}')}" th:errors="${user.sno}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          Mobile No:</label>
+        <input type="text" th:field="${user.phone}"/>
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.phone}')}" th:errors="${user.phone}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          Picture Source :</label>
+        <input type="text" th:field="${user.picturesrcString}"/>
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.picturesrcString}')}" th:errors="${user.picturesrcString}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          Email :</label>
+        <input type="email"  th:field="${user.email}"/>
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.email}')}" th:errors="${user.email}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+         Grade :</label>
+        <input type="text"  th:field="${user.grade}" />
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.grade}')}" th:errors="${user.grade}"> </span>
+      </div>
+            <div class="agile-field-txt">
+        <label>
+         GPA :</label>
+        <input type="text"  th:field="${user.GPA}" />
+        <span class="fieldError" th:if="${#fields.hasErrors('${user.GPA}')}" th:errors="${user.GPA}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+         Price :</label>
+		 <textarea th:field="${user.price}" placeholder="请输入你获奖情况，不同奖项，以中文逗号隔开哦" required=""></textarea>
+		 <span class="fieldError" th:if="${#fields.hasErrors('${user.price}')}" th:errors="${user.price}"> </span>
+      </div>
+      <div class="agile-field-txt">
+        <label>
+          Favorite Music :</label>
+         <textarea th:field="${user.music}" placeholder="请输入你喜欢的音乐曲目，不同音乐，以中文逗号隔开哦" required=""></textarea>
+         <span class="fieldError" th:if="${#fields.hasErrors('${user.music}')}" th:errors="${user.music}"> </span>
+      </div>
+      <div class="w3ls-contact  w3l-sub">
+        <input type="submit" value="Complete">
+      </div>
+
+    </form>
+  </div>
+  <!-- //form ends here -->
+  <div class="copy-wthree">
+    <p>Copyright &copy; YONGJIE CHEN reserved.</p>
+  </div>
+</body>
+<!-- //Body -->
+
+</html>

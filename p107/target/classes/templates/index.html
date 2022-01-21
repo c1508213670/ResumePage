@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<title>欢迎到来</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="shortcut icon" th:href="@{/images/myico.ico}" />
+
+<script type="text/javascript">
+
+String.prototype.trim = function() {
+    return this.replace(/(^\s*)|(\s*$)/g, "");
+}
+
+function checkName(username) {
+    username = username.trim();
+    var ok = false;
+    var nameError = document.getElementById("nameError");
+    if (username == "") {
+        nameError.innerHTML = "<font color='red'>用户名不能为空 </font>";
+        ok = false;
+    } else if (username.length < 3 || username.length > 14) {
+        nameError.innerHTML = "<font color='red'>用户名长度3-14 </font>";
+        ok = false;
+    } else {
+        nameError.innerHTML = " ";
+        ok = true;
+    }
+    return ok;
+}
+
+function checkuName(username) {
+    username = username.trim();
+    var ok = false;
+    var nameError = document.getElementById("unameError");
+    if (username == "") {
+        nameError.innerHTML = "<font color='red'>用户名不能为空 </font>";
+        ok = false;
+    } else if (username.length < 3 || username.length > 14) {
+        nameError.innerHTML = "<font color='red'>用户名长度3-14 </font>";
+        ok = false;
+    } else {
+        nameError.innerHTML = " ";
+        ok = true;
+    }
+    return ok;
+}
+
+function clearNameError() {
+    var nameError = document.getElementById("nameError");
+    nameError.innerHTML = "";
+}
+
+function checkUserpswd(userpswd) {
+    var pswdError = document.getElementById("pswdError");
+    var ok = false;
+    if (userpswd == "") {
+        pswdError.innerHTML = "<font color='red'>密码不能为空 </font>";
+        ok = false;
+
+    } else if (userpswd.length < 6) {
+        pswdError.innerHTML = "<font color='red'>密码不少于6位 </font>";
+        ok = false;
+
+    } else {
+        pswdError.innerHTML = "";
+        ok = true;
+
+    }
+    return ok;
+}
+
+function checkuUserpswd(userpswd) {
+    var pswdError = document.getElementById("upswdError");
+    var ok = false;
+    if (userpswd == "") {
+        pswdError.innerHTML = "<font color='red'>密码不能为空 </font>";
+        ok = false;
+
+    } else if (userpswd.length < 6) {
+        pswdError.innerHTML = "<font color='red'>密码不少于6位 </font>";
+        ok = false;
+
+    } else {
+        pswdError.innerHTML = "";
+        ok = true;
+
+    }
+    return ok;
+}
+
+function clearPswdError() {
+    var pswdError = document.getElementById("pswdError");
+    pswdError.innerHTML = "";
+}
+11
+
+
+function clearuNameError() {
+    var nameError = document.getElementById("unameError");
+    nameError.innerHTML = "";
+}
+
+function clearuPswdError() {
+    var pswdError = document.getElementById("upswdError");
+    pswdError.innerHTML = "";
+}
+
+
+
+11
+function isSame() {
+    var userpswd = document.getElementById("userpswd").value;
+    var confirmpswd = document.getElementById("confirmpswd").value;
+    var confirmpswdError = document.getElementById("confirmpswdError");
+    var ok = false;
+
+    if (userpswd != confirmpswd) {
+        confirmpswdError.innerHTML = "<font color='red'>密码不一致</font>";
+        ok = false;
+
+    } else {
+        confirmpswdError.innerHTML = '';
+        ok = true;
+
+    }
+    return ok;
+}
+
+function clearSameError() {
+    var confirmpswdError = document.getElementById("confirmpswdError");
+    confirmpswdError.innerHTML = '';
+}
+
+function checkAll() {
+    var username = document.getElementById("username").value;
+    var userpswd = document.getElementById("userpswd").value;
+    if (checkName(username) && checkUserpswd(userpswd) && isSame()) {
+        document.registform.submit();
+    }
+}
+
+function checklAll() {
+    var username = document.getElementById("uusername").value;
+    var userpswd = document.getElementById("uuserpswd").value;
+    if (checkName(username) && checkUserpswd(userpswd)) {
+        document.loginform.submit();
+    }
+
+}
+
+function check() {
+        var username = document.getElementById("username").value;
+        var userpswd = document.getElementById("userpswd").value;
+        if (checkName(username) && checkUserpswd(userpswd) && isSame()) {
+            return true;
+        }
+        else{
+        	return false;
+        }
+}
+</script>
+
+</head>
+
+<body class="back-img">
+<img class="myimg" alt="logo" th:src="@{/images/chen.png}">
+    <div class="content">
+        <div class="form sign-in">
+            <h2>欢迎回来</h2>
+            <form th:action="@{/lpage}" name="loginform" th:method="post" th:object="${l_Person}">
+            <label>
+                <span>用户名</span>
+                <input type="text"  th:field="${l_Person.name}" id="uusername"  onblur="checkuName(this.value)" onfocus="clearuNameError()"/>
+                <span id="unameError"></span>
+            </label>
+            <label>
+                <span>密码</span>
+                <input type="password" th:field="${l_Person.password}" id="uuserpswd"  onblur="checkuUserpswd(this.value)" onfocus="clearuPswdError()" />
+                <span id="upswdError"></span>  
+            </label>
+            <p class="forgot-pass"><a href="javascript:">忘记密码？</a></p>
+            <input style=" margin:0 auto;margin-top:20px;width: 260px;height: 26px;border-radius:30px;cursor: pointer;background: #d4af7a " type="submit" value="登录" onclick="checklAll();" >
+            </form>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h2>还未注册？</h2>
+                    <p>加入我们！</p>
+                </div>
+                <div class="img__text m--in">
+                    <h2>已有帐号？</h2>
+                    <p>好久不见！</p>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">注 册</span>
+                    <span class="m--in">登 录</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>立即注册</h2>
+                <form name="registform" th:action="@{/perfectid}" th:method="post" th:object="${r_Person}" onsubmit="return check()">
+                <label>
+                    <span>用户名</span>
+                    <input type="text" th:field="${r_Person.name}" id="username"  onblur="checkName(this.value)" onfocus="clearNameError()"  />
+                    <span id="nameError"></span>
+                </label>
+                <label>
+                    <span>邮箱</span>
+                    <input type="email" th:field="${r_Person.email}" />
+                </label>
+                <label>
+                    <span>密码</span>
+                    <input type="password" th:field="${r_Person.password}" id="userpswd"  onblur="checkUserpswd(this.value)" onfocus="clearPswdError()" />
+                    <span id="pswdError"></span>
+                </label>
+                <label>
+                    <span>确认密码</span>
+                    <input type="password"   id="confirmpswd"  onblur="isSame();" onfocus="clearSameError()"  />
+                    <span id="confirmpswdError"></span>
+                </label>
+                <input style=" margin:0 auto;width: 260px;margin-top:20px;height: 26px;border-radius:30px;cursor: pointer;background: #d4af7a " id="submit" type="submit" value="注册" onclick="checkAll();" >
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/script.js}"></script>
+	
+	<div style="text-align:center;">
+</div>
+</body>
+
+</html>

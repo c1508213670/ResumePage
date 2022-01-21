@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改GPA</title>
+</head>
+<body>
+<form th:action="@{/selectlessons}" th:method="post" th:object="${lesson}" >
+
+    <table style="width:100%" border="1">
+       <tr style="height:24px;">
+            <th>课程名</th>
+            <th>GPA</th>
+            <th>完成</th>
+        </tr>
+        <tr style="height:24px;">
+		<td style="text-align:center"><input style="font-size:20px;width:100%" th:field="${lesson.name}" /></td>
+        <td style="text-align:center"><input style="font-size:20px;width:100%" th:field="${lesson.GPA}" /></td>
+        <td style="text-align:center"><input type="submit"  value="确认修改" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>四年成绩展示</title>
+</head>
+<body th:obeject="${lessons}">
+<table border="1" style="width:100%">
+<tr>
+<th>lesson</th>
+<th>GPA</th>
+<th>增加</th>
+<th>删除</th>
+</tr>
+<tr style="height:24px;" th:each="lesson : ${lessons}">
+	<td style="font-size:20px;text-align:center" th:text="${lesson.name}">lesson</td>
+	<td style="font-size:20px;text-align:center" th:text="${lesson.GPA}">GPA</td>
+	<td style="text-align:center" ><a style="font-size:20px;text-align:center" th:href="@{/updatel(lessonname=${lesson.name})}" >Update</a></td>
+	<td style="text-align:center" ><a style="font-size:20px;text-align:center" th:href="@{/deletel(lessonname=${lesson.name})}">Delete</a></td>
+</tr>
+<tr style="height:24px;" ><td colspan="1" style="text-align:center; " ><form th:action="@{/insertl}" th:method="post" ><input type="submit" value="insert"></input></form></td><td colspan="4" style="font-size:20px;text-align:center" ><form th:action="@{/selectlesson}" th:method="post" th:object="${ylesson}"><input th:field="${ylesson.name}"><input type="submit" value="选择课程查找"></input></form></td></tr>
+</table>
+</body>
+</html>

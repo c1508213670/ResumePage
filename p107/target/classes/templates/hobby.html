@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/mystyle.css}">
+</head>
+<body>
+<div style="text-align:center">
+	<ul class="content" th:each="music,iterStat : ${musics}">
+		<li  class="content" >
+			<div class="content" th:text="${music}">
+			</div>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

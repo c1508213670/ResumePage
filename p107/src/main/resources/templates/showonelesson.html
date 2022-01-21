@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>选择GPA</title>
+</head>
+<body>
+<form th:action="@{/selectlessons}" th:method="get" th:object="${lesson}" >
+
+    <table border="1" style="width:100%">
+       <tr>
+            <th>课程名</th>
+            <th>GPA</th>
+            <th>返回</th>
+        </tr>
+        <tr style="height:24px;">
+		<td style="text-align:center"><input style="font-size:20px;width:90%" th:field="${lesson.name}" /></td>
+        <td style="text-align:center"><input style="font-size:20px;width:90%" th:field="${lesson.GPA}" /></td>
+        <td style="text-align:center"><input type="submit"  value="返回" /></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
